@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALERTA MUNDIAL: Nueva Variante Kobit-25</title>
+    
+    <!-- Fuentes de Google para dar aspecto profesional -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Oswald:wght@400;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- ESTILOS GENERALES --- */
+        :root {
+            --primary-red: #c0392b; /* Rojo noticia urgente */
+            --dark-text: #2c3e50;
+            --light-bg: #fdfdfd;
+            --grey-text: #7f8c8d;
+            --border-color: #e0e0e0;
+        }
+
+        body {
+            font-family: 'Merriweather', serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: var(--dark-text);
+            line-height: 1.8;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* --- BARRA DE NAVEGACIÓN Y ALERTA --- */
+        .top-bar {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 10px 0;
+            font-family: 'Roboto', sans-serif;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .nav-links {
+            float: right;
+            opacity: 0.8;
+        }
+        
+        .nav-links span {
+            margin-left: 15px;
+            cursor: pointer;
+        }
+
+        .breaking-news {
+            background-color: var(--primary-red);
+            color: white;
+            padding: 10px 0;
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 10;
+        }
+
+        .breaking-label {
+            background-color: white;
+            color: var(--primary-red);
+            padding: 2px 8px;
+            margin-right: 15px;
+            border-radius: 2px;
+            font-size: 0.9rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        /* --- CABECERA DE LA NOTICIA --- */
+        header {
+            background-color: white;
+            padding-top: 50px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .category {
+            color: var(--primary-red);
+            font-family: 'Roboto', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            display: block;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 3.2rem;
+            line-height: 1.1;
+            margin: 0 0 20px 0;
+            color: #111;
+        }
+
+        .subtitle {
+            font-size: 1.35rem;
+            color: #444;
+            font-weight: 300;
+            margin-bottom: 25px;
+            line-height: 1.4;
+        }
+
+        .meta-data {
+            font-family: 'Roboto', sans-serif;
+            font-size: 0.85rem;
+            color: var(--grey-text);
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .author strong {
+            color: #333;
+            font-weight: 700;
+        }
+
+        .social-share {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .social-icon {
+            width: 20px;
+            height: 20px;
+            background-color: #ddd;
+            border-radius: 50%;
+        }
+
+        /* --- CONTENIDO PRINCIPAL --- */
+        article {
+            background-color: white;
+            padding: 40px 50px;
+            margin-top: 30px;
+            margin-bottom: 60px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            border-radius: 4px;
+        }
+
+        /* Estilos de Imágenes */
+        figure {
+            margin: 35px -20px 35px -20px; /* Un poco más ancho que el texto */
+            width: calc(100% + 40px);
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        figcaption {
+            font-family: 'Roboto', sans-serif;
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 10px;
+            padding: 0 20px;
+            border-left: 3px solid var(--primary-red);
+            line-height: 1.4;
+        }
+
+        /* Texto del artículo */
+        p {
+            margin-bottom: 22px;
+            font-size: 1.15rem;
+            color: #2c2c2c;
+        }
+
+        .lead-paragraph {
+            font-weight: 500; /* Un poco más grueso para la entrada */
+        }
+
+        h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2rem;
+            margin-top: 50px;
+            margin-bottom: 25px;
+            color: #111;
+            position: relative;
+        }
+        
+        h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-red);
+            margin-top: 10px;
+        }
+
+        h4 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            margin-top: 35px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .highlight-box {
+            background-color: #fcfcfc;
+            border-left: 4px solid var(--primary-red);
+            padding: 25px 30px;
+            margin: 40px 0;
+            font-style: italic;
+            color: #555;
+            font-size: 1.2rem;
+            font-family: 'Merriweather', serif;
+        }
+        
+        .highlight-box strong {
+            display: block;
+            margin-top: 15px;
+            font-style: normal;
+            font-size: 0.9rem;
+            color: #333;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        /* --- PIE DE PÁGINA REALISTA --- */
+        .main-footer {
+            background-color: #111;
+            color: #999;
+            padding: 40px 0;
+            margin-top: auto;
+            font-family: 'Roboto', sans-serif;
+            font-size: 0.85rem;
+            border-top: 4px solid var(--primary-red);
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: #999;
+            text-decoration: none;
+            margin-left: 20px;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            article { padding: 25px 20px; }
+            .subtitle { font-size: 1.1rem; }
+            figure { margin: 25px -20px; width: calc(100% + 40px); }
+            .footer-content { flex-direction: column; gap: 20px; text-align: center; }
+            .footer-links a { margin: 0 10px; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Barra Superior -->
+    <div class="top-bar">
+        <div class="container">
+            Global Health News Network | Edición Internacional
+            <div class="nav-links">
+                <span>SUSCRÍBETE</span>
+                <span>INICIAR SESIÓN</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Alerta Roja -->
+    <div class="breaking-news">
+        <div class="container">
+            <span class="breaking-label">EN VIVO</span>
+            OMS DECLARA EMERGENCIA GLOBAL POR VARIANTE 'KOBIT-25'
+        </div>
+    </div>
+
+    <!-- Cabecera -->
+    <header>
+        <div class="container">
+            <span class="category">Salud & Ciencia</span>
+            <h1>Alerta Mundial: Detectan 'Kobit-25', la variante híbrida resistente a vacunas</h1>
+            <p class="subtitle">Expertos advierten sobre una ola masiva de contagios originada en Asia. La economía y el turismo europeo, bajo amenaza de nuevas restricciones.</p>
+            
+            <div class="meta-data">
+                <span class="author">Por <strong>Equipo de Investigación de Salud Global</strong></span>
+                <span class="date">10 de Diciembre de 2025 | 14:30 GMT</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <article>
+            <!-- IMAGEN PRINCIPAL (Conferencia OMS) -->
+            <figure>
+                <img src="1.jpg" alt="Conferencia de prensa de la OMS declarando emergencia">
+                <figcaption>La Dra. Elena Vargas comunica la declaración de emergencia internacional desde Ginebra debido a la rápida expansión de Kobit-25.</figcaption>
+            </figure>
+
+            <p class="lead-paragraph"><strong>Ginebra, Suiza</strong> – La Organización Mundial de la Salud (OMS) ha declarado una "emergencia de salud pública de preocupación internacional" tras la detección de una nueva variante del COVID-19, bautizada como <strong>"Kobit-25"</strong>, que se propaga rápidamente en varios países de Asia y Europa. Expertos advierten que esta cepa podría superar en contagiosidad a las variantes anteriores.</p>
+
+            <h2>El Origen y la Detección Inicial</h2>
+            
+            <p>La variante Kobit-25 fue identificada por primera vez en un laboratorio de Pekín, China, a finales de noviembre de 2025, en muestras de pacientes con síntomas similares a los de la COVID-19 original, pero con una mayor resistencia a las vacunas existentes.</p>
+
+            <!-- IMAGEN 2 (Laboratorio) -->
+            <figure>
+                <img src="2.jpg" alt="Científicos trabajando en laboratorio de bioseguridad en Pekín">
+                <figcaption>Investigadores analizan la estructura recombinada del virus en un laboratorio de nivel 4 en Pekín. La pantalla muestra el modelo de la variante.</figcaption>
+            </figure>
+
+            <p>Según informes preliminares de la OMS, esta mutación parece haber surgido de una <strong>recombinación entre el virus SARS-CoV-2 y cepas estacionales de gripe</strong>, lo que le confiere una capacidad de transmisión aérea superior al 50% en comparación con Omicron.</p>
+
+            <div class="highlight-box">
+                "Esta variante evade parcialmente la inmunidad adquirida por vacunas e infecciones previas. Estamos viendo tasas de hospitalización que podrían colapsar sistemas de salud si no actuamos rápido." 
+                <strong>— Dra. Elena Vargas, Epidemióloga Jefe de la OMS.</strong>
+            </div>
+
+            <h2>Impacto en la Salud y la Economía Mundial</h2>
+            
+            <p>El pánico se ha apoderado de los mercados y los centros de transporte. En las últimas dos semanas, se han reportado más de 50.000 casos confirmados en China, Corea del Sur y Japón.</p>
+
+            <!-- IMAGEN 3 (Aeropuerto) -->
+            <figure>
+                <img src="3.jpg" alt="Caos y controles sanitarios en aeropuerto europeo">
+                <figcaption>Viajeros hacen cola para controles sanitarios en el aeropuerto de Frankfurt. Las pantallas muestran múltiples vuelos cancelados ante la incertidumbre.</figcaption>
+            </figure>
+
+            <h4>Europa en Alerta Máxima</h4>
+            <p>Países como Alemania y Francia han registrado brotes importados, con más de 2.000 casos en aeropuertos. La Unión Europea debate la reimposición de pruebas obligatorias para viajeros y posibles cierres de fronteras, lo que podría afectar el turismo navideño y generar pérdidas económicas estimadas en miles de millones de euros.</p>
+
+            <h4>Asia: Epicentro del Resurgimiento</h4>
+            <p>China ha implementado cuarentenas estrictas en ciudades como Shanghái, recordando las medidas de 2020. Las imágenes que llegan desde la región muestran un retorno a los controles severos.</p>
+
+            <!-- IMAGEN 4 (Desinfección/Hazmat) -->
+            <figure>
+                <img src="4.jpg" alt="Equipos de desinfección en calles de Shanghai">
+                <figcaption>Equipos de desinfección patrullan zonas residenciales bajo cuarentena estricta en Shanghái, intentando contener el brote inicial.</figcaption>
+            </figure>
+
+            <h2>Perspectivas Futuras</h2>
+            <p>Datos preliminares indican una tasa de mortalidad del 1-2%, similar a la de variantes pasadas, pero con síntomas más persistentes como fatiga crónica. La OMS estima que, sin intervenciones, podría infectar al 30% de la población mundial en los próximos seis meses.</p>
+            
+            <p>Líderes mundiales han convocado una cumbre virtual urgente. "Esto no es el fin del mundo, pero sí un recordatorio de que el virus no ha desaparecido", afirmó el Dr. Michael Ryan.</p>
+
+        </article>
+    </div>
+
+    <!-- Pie de página REALISTA -->
+    <footer class="main-footer">
+        <div class="container footer-content">
+            <div class="copyright">
+                &copy; 2025 Global Health News Network. Todos los derechos reservados.
+            </div>
+            <div class="footer-links">
+                <a href="#">Política de Privacidad</a>
+                <a href="#">Términos de Uso</a>
+                <a href="#">Contacto</a>
+                <a href="#">Sobre Nosotros</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
+
+
